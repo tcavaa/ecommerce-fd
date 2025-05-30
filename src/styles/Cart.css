@@ -1,0 +1,14 @@
+.OverlayBg {
+    background: rgba(57, 55, 72, 0.22);
+    top:80px;
+}
+.CartContainer {
+    top:80px;
+    right:10%;
+    width:325px;
+}
+.forHeight {
+    max-height:628px;
+    padding:10px;
+    width:325px;
+}
