@@ -17,7 +17,7 @@ const Cart = ({
   const currencySymbol = cartItems.length > 0 ? cartItems[0].prices[0]?.currency.symbol : '$';
 
   return (
-    <Dialog open={isOpen} onClose={onClose} className="relative z-50">
+    <Dialog data-testid="cart-overlay" open={isOpen} onClose={onClose} className="relative z-50">
       <DialogBackdrop
         transition
         className="fixed inset-0 transition-opacity duration-500 ease-in-out data-closed:opacity-0"

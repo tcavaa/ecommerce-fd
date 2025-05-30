@@ -18,8 +18,8 @@ const Nav = ({ cartItems, onUpdateQuantity, subtotal,onPlaceOrder, isPlacingOrde
       <div className="flex items-center flex-nowrap gap-2 sm:gap-3 md:gap-8 overflow-x-auto min-w-0 pr-2">
         
         {categoryData?.categories.map((cat: Category) => {
-          const linkTo = cat.name === 'all' ? '/' : `/${cat.name}`;
-          const isActive = currentPath === linkTo;
+          const linkTo = cat.name === 'all' ? '/all' : `/${cat.name}`;
+          const isActive = currentPath === linkTo || (linkTo === '/all' && currentPath === '/');
           const testId = isActive ? 'active-category-link' : 'category-link';
 
           return (
@@ -58,7 +58,7 @@ const Nav = ({ cartItems, onUpdateQuantity, subtotal,onPlaceOrder, isPlacingOrde
         </button>
       </div>  
      <Cart  isOpen={isOpen} 
-            onClose={onClose} 
+            onClose={onClose}
             cartItems={cartItems} 
             onUpdateQuantity={onUpdateQuantity}
             subtotal={subtotal}

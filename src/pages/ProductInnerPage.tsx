@@ -154,13 +154,14 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
 
       <div className="mt-8 lg:mt-0 pr-[160px] space-y-5 md:space-y-6 lg:pl-15">
         <div>
-          <h1 className="text-[30px] sm:text-3xl font-[600] text-[#1D1F22] tracking-normal" data-testid="product-name">{product.name}</h1>
+          <h1 className="text-[30px] sm:text-3xl font-[600] text-[#1D1F22] tracking-normal">{product.name}</h1>
         </div>
 
         {product.attributes && product.attributes.length > 0 && (
           <div className="space-y-5">
             {product.attributes.map((attrSet: AttributeSetType) => {
               const kebabAttribute = attrSet.name.toLowerCase().replace(/\s+/g, '-');
+              console.log(attrSet.name)
               return (
                 <div key={attrSet.id} data-testid={`product-attribute-${kebabAttribute}`}>
                   <h3 className="text-[18px] font-[700] text-[#1D1F22] uppercase tracking-wider mb-2">
@@ -182,7 +183,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                             title={item.displayValue}
                             aria-label={`Select ${attrSet.name} ${item.displayValue}`}
                             aria-pressed={isSelected}
-                            data-testid={`attr-item-${item.id}`}
+                            data-testid={`product-attribute-${attrSet.name}-${item.value}`}
                           >
                             <span className="block w-full h-full" style={{ backgroundColor: item.value }}></span>
                           </button>
