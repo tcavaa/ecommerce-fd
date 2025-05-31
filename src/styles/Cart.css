@@ -9,10 +9,34 @@
     padding:10px;
     width:325px;
 }
-.MainCont {
-    position:fixed;
-    top:80px;
+
+.CartModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: rgba(57, 55, 72, 0.22);
+  top:80px;
 }
-.OverlayBg {
-    background: rgba(57, 55, 72, 0.22);
+
+.CartModalContainer {
+  width:325px;
+  max-height:628px;
+  background-color: red;
+  overflow-y: auto;
+  position:absolute;
+  right: 100px;
+}
+
+.CartPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.CartContent {
+  flex: 1;
+  overflow-y: auto;
 }
