@@ -161,7 +161,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
           <div className="space-y-5">
             {product.attributes.map((attrSet: AttributeSetType) => {
               const kebabAttribute = attrSet.name.toLowerCase().replace(/\s+/g, '-');
-              console.log(attrSet.name)
+              
               return (
                 <div key={attrSet.id} data-testid={`product-attribute-${kebabAttribute}`}>
                   <h3 className="text-[18px] font-[700] text-[#1D1F22] uppercase tracking-wider mb-2">
@@ -171,7 +171,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                     {attrSet.items.map((item: AttributeItemType) => {
                       const isSelected = currentSelections[attrSet.id] === item.id;
                       const focusRingClasses = "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-500";
-
+                      const kebabAttribute2 = item.value.toLowerCase().replace(/\s+/g, '-');
                       if (attrSet.name.toLowerCase() === 'color') {
                         return (
                           <button
@@ -183,7 +183,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                             title={item.displayValue}
                             aria-label={`Select ${attrSet.name} ${item.displayValue}`}
                             aria-pressed={isSelected}
-                            data-testid={`product-attribute-${attrSet.name}-${item.value}`}
+                            data-testid={`product-attribute-${kebabAttribute}-${kebabAttribute2}`}
                           >
                             <span className="block w-full h-full" style={{ backgroundColor: item.value }}></span>
                           </button>
@@ -200,7 +200,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                                           : 'bg-white text-[#1D1F22] border-gray-400 hover:border-black'
                                         }`}
                             aria-pressed={isSelected}
-                            data-testid={`attr-item-${item.id}`}
+                            data-testid={`product-attribute-${kebabAttribute}-${kebabAttribute2}`}
                           >
                             {item.value}
                           </button>
