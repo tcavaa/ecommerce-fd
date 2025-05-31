@@ -125,7 +125,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
           </div>
         )}
 
-        <div className="flex-grow relative  MainImageInner aspect-[0.8] sm:aspect-square lg:aspect-[0.8] bg-gray-100 rounded-sm overflow-hidden shadow-sm"> {/* Adjusted aspect ratio */}
+        <div className="flex-grow relative  MainImageInner aspect-[0.8] sm:aspect-square lg:aspect-[0.8] bg-gray-100 rounded-sm overflow-hidden shadow-sm">
           <img
             src={mainImage}
             alt={product.name}
