@@ -13,7 +13,7 @@ const ProductsPage = ({ onAddToCart }: ProductsPageProps) => {
       variables: { category: category || "" }
     }
   );
-  console.log(data);
+  
   if (loading) return <p className="text-center mt-8">Loading...</p>
   if (error) return <p className="text-center text-red-500 mt-8">Error: {error.message}</p>
   

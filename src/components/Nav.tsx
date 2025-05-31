@@ -23,7 +23,7 @@ const Nav = ({ cartItems, onUpdateQuantity, subtotal,onPlaceOrder, isPlacingOrde
           const testId = isActive ? 'active-category-link' : 'category-link';
 
           return (
-            <div className="flex-shrink-0 mx-2 sm:mx-4">
+            <div key={cat.name} className="flex-shrink-0 mx-2 sm:mx-4">
               <Link
                 key={cat.name}
                 to={linkTo}

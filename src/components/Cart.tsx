@@ -15,7 +15,8 @@ const Cart = ({
 }: CartProps) => {
   
   const currencySymbol = cartItems.length > 0 ? cartItems[0].prices[0]?.currency.symbol : '$';
-
+  if (!isOpen) return null;
+  
   return (
     <Dialog open={isOpen} onClose={onClose} className="relative z-50">
       <DialogBackdrop
