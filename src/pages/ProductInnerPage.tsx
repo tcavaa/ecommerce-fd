@@ -171,7 +171,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                     {attrSet.items.map((item: AttributeItemType) => {
                       const isSelected = currentSelections[attrSet.id] === item.id;
                       const focusRingClasses = "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-500";
-                      const kebabAttribute2 = item.value.toLowerCase().replace(/\s+/g, '-');
+                      
                       if (attrSet.name.toLowerCase() === 'color') {
                         return (
                           <button
@@ -183,7 +183,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                             title={item.displayValue}
                             aria-label={`Select ${attrSet.name} ${item.displayValue}`}
                             aria-pressed={isSelected}
-                            data-testid={`product-attribute-${kebabAttribute}-${kebabAttribute2}`}
+                            data-testid={`product-attribute-${kebabAttribute}-${item.value}`}
                           >
                             <span className="block w-full h-full" style={{ backgroundColor: item.value }}></span>
                           </button>
@@ -200,7 +200,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                                           : 'bg-white text-[#1D1F22] border-gray-400 hover:border-black'
                                         }`}
                             aria-pressed={isSelected}
-                            data-testid={`product-attribute-${kebabAttribute}-${kebabAttribute2}`}
+                            data-testid={`product-attribute-${kebabAttribute}-${item.value}`}
                           >
                             {item.value}
                           </button>
