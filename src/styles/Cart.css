@@ -17,7 +17,16 @@
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
+  
+}
+.BGOverlay {
   background: rgba(57, 55, 72, 0.22);
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
   top:80px;
 }
 
