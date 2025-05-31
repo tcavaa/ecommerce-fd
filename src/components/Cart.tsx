@@ -1,4 +1,5 @@
 import type { Attribute as AttributeSetType, AttributeItem as AttributeItemType, CartProps } from '../types/interfaces';
+import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import { Link } from 'react-router-dom';
 import '../styles/Cart.css';
 
@@ -17,15 +18,23 @@ const Cart = ({
   if (!isOpen) return null;
   
   return (
-    <div className="CartModalOverlay" data-testid="cart-overlay" onClick={onClose}>
-    <div className="BGOverlay">
-      <div className="CartModalContainer" onClick={(e) => e.stopPropagation()}>
-        <div className="CartPanel">
-          <div className="CartContent">
+    <Dialog open={isOpen} onClose={onClose} className="relative z-50">
+      <DialogBackdrop
+        transition
+        className="MainCont fixed inset-0 transition-opacity duration-500 ease-in-out data-closed:opacity-0"
+        data-testid="cart-overlay"
+      />
+      <div className="MainCont fixed  inset-0 overflow-hidden">
+        <div className="OverlayBg absolute inset-0 overflow-hidden">
+          <div className="CartContainer pointer-events-none fixed inset-y-0 flex max-w-full pl-10">
+            <DialogPanel
+              transition
+              className="pointer-events-auto w-screen max-w-mdtransform transition duration-500 ease-in-out data-closed:translate-x-full sm:duration-700"
+            >
                 <div className="flex forHeight flex-col overflow-y-scroll bg-white">
                   <div className="flex-1 overflow-y-auto py-2 sm:px-2">
                     <div className="flex items-start justify-between">
-                      <h1 className="text-[16px] font-[500] text-[#1D1F22]"><span className='font-[700]'>My Bag,</span> {totalCartQuantity} items</h1>
+                      <DialogTitle className="text-[16px] font-[500] text-[#1D1F22]"><span className='font-[700]'>My Bag,</span> {totalCartQuantity} items</DialogTitle>
                     </div>
 
                     {cartItems.length === 0 ? (
@@ -191,11 +200,11 @@ const Cart = ({
                     </div>
                   )}
                 </div>
-              </div>
+            </DialogPanel>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </Dialog>
   );
 };
 
