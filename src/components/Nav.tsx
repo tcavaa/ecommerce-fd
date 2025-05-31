@@ -57,15 +57,17 @@ const Nav = ({ cartItems, onUpdateQuantity, subtotal,onPlaceOrder, isPlacingOrde
           )}
         </button>
       </div>  
-     <Cart  isOpen={isOpen} 
-            onClose={onClose}
-            cartItems={cartItems} 
-            onUpdateQuantity={onUpdateQuantity}
-            subtotal={subtotal}
-            onPlaceOrder={onPlaceOrder}
-            isPlacingOrder={isPlacingOrder}
-            totalCartQuantity={totalCartQuantity}
-    />
+      {isOpen && (
+        <Cart  isOpen={isOpen} 
+                onClose={onClose}
+                cartItems={cartItems} 
+                onUpdateQuantity={onUpdateQuantity}
+                subtotal={subtotal}
+                onPlaceOrder={onPlaceOrder}
+                isPlacingOrder={isPlacingOrder}
+                totalCartQuantity={totalCartQuantity}
+        />
+      )}
     </nav>
     
   );

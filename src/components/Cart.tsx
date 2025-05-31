@@ -23,7 +23,7 @@ const Cart = ({
         className="fixed inset-0 transition-opacity duration-500 ease-in-out data-closed:opacity-0"
         data-testid="cart-overlay"
       />
-      
+      <div className="fixed  inset-0 overflow-hidden">
         <div className="OverlayBg absolute inset-0 overflow-hidden">
           <div className="CartContainer pointer-events-none fixed inset-y-0 flex max-w-full pl-10">
             <DialogPanel
@@ -202,7 +202,7 @@ const Cart = ({
             </DialogPanel>
           </div>
         </div>
-      
+      </div>
     </Dialog>
   );
 };
