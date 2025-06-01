@@ -24,7 +24,6 @@
 .CartModalContainer {
   width:325px;
   max-height:628px;
-  background-color: red;
   overflow-y: auto;
   position:absolute;
   right: 100px;

@@ -33,7 +33,7 @@ const ProductsPage = ({ onAddToCart }: ProductsPageProps) => {
             <div
               key={product.id}
               data-testid={`product-${kebabCaseName}`}
-              className="ProductsContainer group relative flex flex-col overflow-hidden"
+              className="ProductsContainer group relative pt-4 flex flex-col overflow-hidden"
             >
               <Link to={`/product/${product.id}`} className="block" aria-label={`View details for ${product.name}`}>
                 <div className="aspect-w-1 aspect-h-1 overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
@@ -75,7 +75,7 @@ const ProductsPage = ({ onAddToCart }: ProductsPageProps) => {
                     onAddToCart(product);
                   }}
                   aria-label={`Add ${product.name} to cart`}
-                  className="absolute top-77 right-7 p-2 bg-[#5ECE7B] text-white rounded-full shadow-md 
+                  className="absolute top-81 right-8 p-2 bg-[#5ECE7B] text-white rounded-full shadow-md 
                              opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all duration-300
                              transform translate-y-2 group-hover:translate-y-0 cursor-pointer
                              hover:bg-[#5ECE7B] focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"

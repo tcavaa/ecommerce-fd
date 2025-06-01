@@ -23,13 +23,14 @@ const Nav = ({ cartItems, onUpdateQuantity, subtotal,onPlaceOrder, isPlacingOrde
           const testId = isActive ? 'active-category-link' : 'category-link';
 
           return (
-            <div key={cat.name} className="flex-shrink-0 mx-2 sm:mx-4">
+            <div key={cat.name} className="flex-shrink-0 mx-2 sm:mx-4"> 
               <Link
                 key={cat.name}
                 to={linkTo}
                 className={`CategoryLink
+                  text-[16px] font-[400] flex items-center justify-center
                   transition uppercase
-                  ${isActive ? 'border-b-2 ActiveCategoryLink' : ''}
+                  ${isActive ? 'border-b-2 ActiveCategoryLink text-[#5ECE7B]' : ''}
                 `}
                 data-testid={testId}
               >

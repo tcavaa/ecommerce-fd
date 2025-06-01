@@ -132,7 +132,7 @@ const Cart = ({
                                                         key={itemOption.id}
                                                         title={itemOption.displayValue}
                                                         data-testid={`cart-item-attribute-${kebabAttributeName}-${itemValueKebab}${testIdSuffix}`}
-                                                        className={`inline-block h-6 w-6 ${isSelected ? 'ring-2 ring-offset-1 ring-[#5ECE7B] border-green' : 'border-[#5ECE7B]'}`}
+                                                        className={`inline-block size-[16px] ${isSelected ? 'ring-2 ring-offset-1 ring-[#5ECE7B] border-green' : 'border-[#5ECE7B]'}`}
                                                         style={{ backgroundColor: itemOption.value }}
                                                         aria-label={`${attrSet.name}: ${itemOption.displayValue}${isSelected ? ' (selected)' : ''}`}
                                                       ></span>
@@ -204,7 +204,7 @@ const Cart = ({
                         disabled={isPlacingOrder || cartItems.length === 0}
                         className="w-full flex items-center justify-center border border-transparent bg-[#5ECE7B] py-3 text-[14px] font-medium text-white hover:bg-[#7be396]"
                       >
-                        {isPlacingOrder ? 'Placing Order...' : 'Place Order'}
+                        {isPlacingOrder ? 'Placing Order...' : 'PLACE ORDER'}
                       </button>
                     </div>
                   </div>

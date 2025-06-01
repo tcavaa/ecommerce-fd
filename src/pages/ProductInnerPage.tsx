@@ -104,14 +104,14 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
       <div className="flex flex-row items-start gap-x-2 sm:gap-x-4 lg:sticky lg:top-24 self-start" data-testid="product-gallery">
         {product.gallery && product.gallery.length > 0 && (
           <div 
-            className="flex flex-col w-16 sm:w-20 flex-shrink-0 gap-2 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100" 
+            className="flex flex-col w-16 sm:w-20 mr-[27px] flex-shrink-0 gap-2 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100" 
             style={{ maxHeight: '480px' }}
           >
             {product.gallery.map((imgUrl, index) => (
               <button
                 key={index}
                 onClick={() => handleThumbnailClick(index)}
-                className={`w-full galleryImg aspect-square rounded-sm overflow-hidden border-2 flex-shrink-0 transition-all duration-150
+                className={`w-full galleryImg aspect-square overflow-hidden flex-shrink-0 transition-all duration-150
                             ${currentIndex === index ? 'border-gray-900 ring-1 ring-gray-900' : 'border-gray-300 hover:border-gray-500 opacity-70 hover:opacity-100'}`}
                 aria-label={`View image ${index + 1} of ${product.gallery.length}`}
               >
@@ -178,7 +178,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                             key={item.id}
                             type="button"
                             onClick={() => handleAttributeSelect(attrSet.id, item.id)}
-                            className={`w-8 h-8  ${focusRingClasses} transition-all
+                            className={`size-[32px]  ${focusRingClasses} transition-all
                                         ${isSelected ? ' ring-1 ring-[green] ring-offset-1' : 'hover:border-gray-400'}`}
                             title={item.displayValue}
                             aria-label={`Select ${attrSet.name} ${item.displayValue}`}
