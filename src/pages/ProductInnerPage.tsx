@@ -9,7 +9,6 @@ import AttributeDisplay from '../components/AttributeDisplay';
 import type {
   GetProductData,
   Attribute as AttributeSetType,
-  AttributeItem as AttributeItemType,
   SelectedAttribute,
   ProductInnerPageProps
 } from '../types/interfaces';

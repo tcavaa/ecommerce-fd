@@ -1,4 +1,4 @@
-import type {CardItemProprs, Attribute as AttributeSetType, AttributeItem as AttributeItemType} from '../types/interfaces';
+import type {CardItemProprs, Attribute as AttributeSetType} from '../types/interfaces';
 import AttributeDisplay from './AttributeDisplay';
 import { Link } from 'react-router-dom';
 
