@@ -27,6 +27,7 @@ function App() {
         return JSON.parse(storedCartItems);
       }
     } catch (error) {
+      console.log("Error loading cart items from localStorage:", error);
     }
     return [];
   });
