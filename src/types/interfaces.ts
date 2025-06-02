@@ -114,6 +114,17 @@ export interface CartProps {
 export interface ProductsPageProps {
   onAddToCart: (product: Product) => void;
 }
+export interface ProductCardProps {
+  onAddToCart: (product: Product) => void;
+  product: Product;
+}
+export interface CardItemProprs {
+  onUpdateQuantity: (productId: string, attributes: SelectedAttribute[], newQuantity: number) => void;
+  product: CartItem;
+}
+export interface ProductsGalleryProps {
+  data: GetProductData;
+}
 export interface ProductInnerPageProps {
   onAddToCart: (product: Product, chosenAttributes: SelectedAttribute[]) => void;
   isOpen: boolean;
