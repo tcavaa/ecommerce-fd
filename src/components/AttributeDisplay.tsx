@@ -25,7 +25,7 @@ const AttributeDisplay = ({
           const itemValueKebab = itemOption.displayValue.replace(/\s+/g, '-');
           const testId = `${baseTestIdPrefix}-attribute-${kebabAttributeName}-${itemValueKebab}${isSelected ? '-selected' : ''}`;
           const uniqueKey = `${displayContext}-${attributeSet.id}-${itemOption.id}-${index}`;
-          console.log(uniqueKey);
+          
           const commonProps = {
             title: itemOption.displayValue,
             'data-testid': testId,
