@@ -17,17 +17,17 @@ import '../styles/ProductInnerPage.css';
 const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
   const { id } = useParams<{ id: string }>();
   const { loading, error, data } = useQuery<GetProductData>(GET_PRODUCT, {
-    variables: { id: id || "" },
+    variables: { id: id ?? "" },
     skip: !id,
   });
-  const cleanDescription = DOMPurify.sanitize(data?.product.description || "");
+  const cleanDescription = DOMPurify.sanitize(data?.product.description ?? "");
   const [currentSelections, setCurrentSelections] = useState<Record<string, string | undefined>>({});
 
   useEffect(() => {
     if (data?.product?.gallery?.length) {
        setCurrentSelections({});
     }
-  }, [data?.product?.id]);
+  }, [data?.product?.id, data?.product?.gallery?.length]);
 
   const allAttributesSelected = data?.product?.attributes?.every(
     (attrSet) => currentSelections[attrSet.id] !== undefined
@@ -41,12 +41,12 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
   };
 
   const handleAddToCartClick = () => {
-    if (!data?.product || !data.product.inStock) return;
+    if (!data?.product?.inStock) return;
 
     const product = data.product;
     const chosenForCart: SelectedAttribute[] = [];
 
-    if (product.attributes && product.attributes.length > 0) {
+    if (product.attributes?.length) {
       for (const attrSet of product.attributes) {
         const selectedItemId = currentSelections[attrSet.id];
         if (selectedItemId) {
@@ -68,10 +68,10 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
 
   if (loading) return <p className="py-20 text-center text-xl">Loading product details...</p>;
   if (error) return <p className="py-20 text-center text-black-500 text-xl">Product Not Found</p>;
-  if (!data || !data.product) return <p className="py-20 text-center text-xl">Product not found.</p>;
+  if (!data?.product) return <p className="py-20 text-center text-xl">Product not found.</p>;
 
   const { product } = data;
-  const currentPrice = product.prices && product.prices.length > 0 ? product.prices[0] : null;
+  const currentPrice = product.prices?.[0] ?? null;
 
   return (
   <div className="ProductsInnerContainer container mx-auto mt-8 sm:mt-12 mb-20 px-4 sm:px-6">
@@ -84,7 +84,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
           <h1 className="text-[30px] sm:text-3xl font-[600] text-[#1D1F22] tracking-normal">{product.name}</h1>
         </div>
 
-        {product.attributes && product.attributes.length > 0 && (
+        {product.attributes?.length && (
           <div className="space-y-5">
             {product.attributes.map((attrSet: AttributeSetType) => {
               const kebabAttribute = attrSet.name.toLowerCase().replace(/\s+/g, '-');

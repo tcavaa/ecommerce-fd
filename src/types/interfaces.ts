@@ -1,4 +1,6 @@
-{/* Products and Cart Interfaces*/}
+{
+  /* Products and Cart Interfaces*/
+}
 export interface Currency {
   label: string;
   symbol: string;
@@ -67,11 +69,13 @@ export interface CartItem extends Product {
   quantity: number;
   selectedAttributes: SelectedAttribute[];
 }
-{/* Order Interfaces*/}
+{
+  /* Order Interfaces*/
+}
 export interface OrderItemInput {
   product_id: string;
   product_name: string;
-  attributes: string; 
+  attributes: string;
   quantity: number;
   amount: number;
   selected_currency: string;
@@ -91,10 +95,16 @@ export interface PlaceOrderMutationData {
 export interface PlaceOrderMutationVars {
   orderInput: OrderInput;
 }
-{/* Components and Pages Interfaces*/}
+{
+  /* Components and Pages Interfaces*/
+}
 export interface NavProps {
   cartItems: CartItem[];
-  onUpdateQuantity: (productId: string, attributes: SelectedAttribute[], newQuantity: number) => void;
+  onUpdateQuantity: (
+    productId: string,
+    attributes: SelectedAttribute[],
+    newQuantity: number
+  ) => void;
   subtotal?: number;
   onPlaceOrder: () => Promise<void>;
   isPlacingOrder: boolean;
@@ -103,7 +113,11 @@ export interface NavProps {
 }
 export interface CartProps {
   cartItems: CartItem[];
-  onUpdateQuantity: (productId: string, attributes: SelectedAttribute[], newQuantity: number) => void;
+  onUpdateQuantity: (
+    productId: string,
+    attributes: SelectedAttribute[],
+    newQuantity: number
+  ) => void;
   subtotal?: number;
   onPlaceOrder: () => Promise<void>;
   isPlacingOrder: boolean;
@@ -118,15 +132,40 @@ export interface ProductCardProps {
   onAddToCart: (product: Product) => void;
   product: Product;
 }
-export interface CardItemProprs {
-  onUpdateQuantity: (productId: string, attributes: SelectedAttribute[], newQuantity: number) => void;
+export interface CartItemProps {
+  onUpdateQuantity: (
+    productId: string,
+    attributes: SelectedAttribute[],
+    newQuantity: number
+  ) => void;
   product: CartItem;
 }
-export interface ProductsGalleryProps {
+export interface ProductGalleryProps {
   data: GetProductData;
 }
 export interface ProductInnerPageProps {
-  onAddToCart: (product: Product, chosenAttributes: SelectedAttribute[]) => void;
+  onAddToCart: (
+    product: Product,
+    chosenAttributes: SelectedAttribute[]
+  ) => void;
   isOpen: boolean;
   onClose: () => void;
+}
+
+// Utility Types
+export interface LoadingState {
+  isLoading: boolean;
+  error?: string | null;
+}
+
+export interface CartOperations {
+  addToCart: (product: Product, chosenAttributes?: SelectedAttribute[]) => void;
+  removeFromCart: (productId: string, attributes: SelectedAttribute[]) => void;
+  updateQuantity: (
+    productId: string,
+    attributes: SelectedAttribute[],
+    newQuantity: number
+  ) => void;
+  clearCart: () => void;
+  calculateSubtotal: () => number;
 }

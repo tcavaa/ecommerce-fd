@@ -13,6 +13,6 @@ const defaultOptions: DefaultOptions = {
 const client = new ApolloClient({
     uri: 'https://bd.rretrocar.ge/graphql',
     cache: new InMemoryCache(),
-    defaultOptions: defaultOptions,
+    defaultOptions,
 });
 export default client;

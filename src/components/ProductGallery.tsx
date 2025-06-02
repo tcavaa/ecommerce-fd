@@ -10,7 +10,7 @@ const ProductGallery = (data:GetProductData) => {
         if (product?.gallery?.length) {
         setCurrentIndex(0);
         }
-    }, [product?.id]);
+    }, [product?.id, product?.gallery?.length]);
 
     const mainImage = product?.gallery?.[currentIndex] || (product?.gallery?.[0] || '');
     
