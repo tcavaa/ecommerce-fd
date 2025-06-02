@@ -1,24 +1,15 @@
-import React from 'react';
-import type { Attribute as AttributeSetType, AttributeItem as AttributeItemType } from '../types/interfaces';
+import type { AttributeDisplayProps, AttributeItem as AttributeItemType } from '../types/interfaces';
 
-interface AttributeDisplayProps {
-  attributeSet: AttributeSetType;
-  selectedItemId?: string;
-  onAttributeSelect?: (attributeSetId: string, itemId: string) => void;
-  baseTestIdPrefix: string;
-  displayContext: 'productPage' | 'cartItem';
-}
-
-const AttributeDisplay: React.FC<AttributeDisplayProps> = ({
+const AttributeDisplay = ({
   attributeSet,
   selectedItemId,
   onAttributeSelect,
   baseTestIdPrefix,
   displayContext,
-}) => {
+}: AttributeDisplayProps) => {
   const kebabAttributeName = attributeSet.name.toLowerCase().replace(/\s+/g, '-');
   const isInteractive = displayContext === 'productPage' && !!onAttributeSelect;
-
+  
   const attributeNameClasses = displayContext === 'productPage'
     ? "text-[18px] font-[700] text-[#1D1F22] uppercase tracking-wider mb-2"
     : "font-normal text-[#1D1F22] text-[14px] capitalize block mb-1";
@@ -29,13 +20,13 @@ const AttributeDisplay: React.FC<AttributeDisplayProps> = ({
         {attributeSet.name}:
       </h3>
       <div className="flex flex-wrap gap-2">
-        {attributeSet.items.map((itemOption: AttributeItemType) => {
+        {attributeSet.items.map((itemOption: AttributeItemType, index: number) => {
           const isSelected = selectedItemId === itemOption.id;
-          const itemValueKebab = itemOption.displayValue.toLowerCase().replace(/\s+/g, '-');
+          const itemValueKebab = itemOption.displayValue.replace(/\s+/g, '-');
           const testId = `${baseTestIdPrefix}-attribute-${kebabAttributeName}-${itemValueKebab}${isSelected ? '-selected' : ''}`;
-
+          const uniqueKey = `${displayContext}-${attributeSet.id}-${itemOption.id}-${index}`;
+          console.log(uniqueKey);
           const commonProps = {
-            key: itemOption.id,
             title: itemOption.displayValue,
             'data-testid': testId,
           };
@@ -73,16 +64,10 @@ const AttributeDisplay: React.FC<AttributeDisplayProps> = ({
                     </button>
                   );
             } else {
-                 // For CartItem, ensure border for swatch itself when not interactive and selected
                  if (isSelected && displayContext === 'cartItem') {
-                    // Already handled by containerClasses's `border-green` part
+                
                  } else if (displayContext === 'cartItem' && !isSelected) {
-                    // Ensure non-selected swatches in cart also have a subtle border if needed or match original
-                    // Original CartItem code had `border-[#5ECE7B]` for swatches generally if not selected, then added more for selected.
-                    // The current logic for `containerClasses` for cartItem non-selected is `inline-block size-[16px] border border-transparent`
-                    // which might differ if a visible border was always intended.
-                    // For consistency with original CartItem:
-                     if (!isSelected) containerClasses += ' border-[#A6A6A6]'; // A neutral border for non-selected swatches in cart
+                    if (!isSelected) containerClasses += ' border-[#A6A6A6]';
                  }
 
 
@@ -92,7 +77,7 @@ const AttributeDisplay: React.FC<AttributeDisplayProps> = ({
                     </span>
                   );
             }
-          } else { // Text-based attributes
+          } else {
             let textItemClasses = `border transition-colors text-[${displayContext === 'productPage' ? '16px' : '14px'}] font-normal`;
              textItemClasses += displayContext === 'productPage'
                 ? ' min-w-[40px] h-10 px-3 py-1'
@@ -107,12 +92,13 @@ const AttributeDisplay: React.FC<AttributeDisplayProps> = ({
                 ? ' border-gray-400 hover:border-black'
                 : ' border-[#1D1F22]';
             }
-
+            
             if (isInteractive) {
                 textItemClasses += ` focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-500`;
                 return (
                     <button
                       {...commonProps}
+                      key={uniqueKey}
                       type="button"
                       onClick={() => onAttributeSelect(attributeSet.id, itemOption.id)}
                       className={textItemClasses}

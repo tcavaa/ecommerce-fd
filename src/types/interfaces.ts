@@ -130,3 +130,11 @@ export interface ProductInnerPageProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+export interface AttributeDisplayProps {
+  attributeSet: Attribute;
+  selectedItemId?: string;
+  onAttributeSelect?: (attributeSetId: string, itemId: string) => void;
+  baseTestIdPrefix: string;
+  displayContext: 'productPage' | 'cartItem';
+}
