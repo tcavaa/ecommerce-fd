@@ -71,7 +71,7 @@ export interface CartItem extends Product {
 export interface OrderItemInput {
   product_id: string;
   product_name: string;
-  attributes: string; 
+  attributes: string;
   quantity: number;
   amount: number;
   selected_currency: string;
@@ -94,7 +94,11 @@ export interface PlaceOrderMutationVars {
 /* Components and Pages Interfaces*/
 export interface NavProps {
   cartItems: CartItem[];
-  onUpdateQuantity: (productId: string, attributes: SelectedAttribute[], newQuantity: number) => void;
+  onUpdateQuantity: (
+    productId: string,
+    attributes: SelectedAttribute[],
+    newQuantity: number
+  ) => void;
   subtotal?: number;
   onPlaceOrder: () => Promise<void>;
   isPlacingOrder: boolean;
@@ -103,7 +107,11 @@ export interface NavProps {
 }
 export interface CartProps {
   cartItems: CartItem[];
-  onUpdateQuantity: (productId: string, attributes: SelectedAttribute[], newQuantity: number) => void;
+  onUpdateQuantity: (
+    productId: string,
+    attributes: SelectedAttribute[],
+    newQuantity: number
+  ) => void;
   subtotal?: number;
   onPlaceOrder: () => Promise<void>;
   isPlacingOrder: boolean;
@@ -118,8 +126,12 @@ export interface ProductCardProps {
   onAddToCart: (product: Product) => void;
   product: Product;
 }
-export interface CardItemProprs {
-  onUpdateQuantity: (productId: string, attributes: SelectedAttribute[], newQuantity: number) => void;
+export interface CartItemProps {
+  onUpdateQuantity: (
+    productId: string,
+    attributes: SelectedAttribute[],
+    newQuantity: number
+  ) => void;
   product: CartItem;
 }
 export interface ProductsGalleryProps {
@@ -137,4 +149,21 @@ export interface AttributeDisplayProps {
   onAttributeSelect?: (attributeSetId: string, itemId: string) => void;
   baseTestIdPrefix: string;
   displayContext: 'productPage' | 'cartItem';
+}
+// Utility Types
+export interface LoadingState {
+  isLoading: boolean;
+  error?: string | null;
+}
+
+export interface CartOperations {
+  addToCart: (product: Product, chosenAttributes?: SelectedAttribute[]) => void;
+  removeFromCart: (productId: string, attributes: SelectedAttribute[]) => void;
+  updateQuantity: (
+    productId: string,
+    attributes: SelectedAttribute[],
+    newQuantity: number
+  ) => void;
+  clearCart: () => void;
+  calculateSubtotal: () => number;
 }

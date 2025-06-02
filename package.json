@@ -3,11 +3,24 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "A modern e-commerce frontend built with React 19, TypeScript, and best practices",
+  "keywords": [
+    "react",
+    "typescript",
+    "ecommerce",
+    "vite",
+    "tailwind",
+    "graphql"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "preview": "vite preview",
+    "clean": "rm -rf dist node_modules/.vite",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\""
   },
   "dependencies": {
     "@apollo/client": "^3.13.8",
@@ -18,6 +31,7 @@
     "graphql": "^16.11.0",
     "heroicons": "^2.2.0",
     "html-react-parser": "^5.2.5",
+    "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.1"
