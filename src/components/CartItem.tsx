@@ -1,10 +1,12 @@
 import type {CardItemProprs, Attribute as AttributeSetType, AttributeItem as AttributeItemType} from '../types/interfaces';
+import AttributeDisplay from './AttributeDisplay';
 import { Link } from 'react-router-dom';
 
 const CartItem = ({
   product,
   onUpdateQuantity
-}: CardItemProprs) => {
+}: CardItemProprs) => 
+{
     const attributeKeyPart = product.selectedAttributes
         .map((sa) => sa.itemId)
         .sort()
@@ -34,49 +36,18 @@ const CartItem = ({
                 <div className="mt-2 text-sm text-[#1D1F22] space-y-2">
                 
                 {product.attributes.map((attrSet: AttributeSetType) => {
-                    const kebabAttributeName = attrSet.name.toLowerCase().replace(/\s+/g, '-');
-                    const selectedOptionForThisSet = product.selectedAttributes.find(
+                  const selectedOptionForThisSet = product.selectedAttributes.find(
                     (sa) => sa.attributeId === attrSet.id
-                    );
-
-                    return (
-                    <div key={attrSet.id} data-testid={`cart-item-attribute-${kebabAttributeName}`}>
-                        <span className="font-normal text-[#1D1F22] text-[14px] capitalize block mb-1">
-                        {attrSet.name}:
-                        </span>
-                        <div className="flex flex-wrap gap-2">
-                        {attrSet.items.map((itemOption: AttributeItemType) => {
-                            const isSelected = selectedOptionForThisSet?.itemId === itemOption.id;
-                            const itemValueKebab = itemOption.displayValue.toLowerCase().replace(/\s+/g, '-');
-                            const testIdSuffix = isSelected ? '-selected' : '';
-
-
-                            if (attrSet.type.toLowerCase() === 'swatch' || attrSet.name.toLowerCase() === 'color') {
-                            return (
-                                <span
-                                key={itemOption.id}
-                                title={itemOption.displayValue}
-                                data-testid={`cart-item-attribute-${kebabAttributeName}-${itemValueKebab}${testIdSuffix}`}
-                                className={`inline-block size-[16px] ${isSelected ? 'ring-2 ring-offset-1 ring-[#5ECE7B] border-green' : 'border-[#5ECE7B]'}`}
-                                style={{ backgroundColor: itemOption.value }}
-                                aria-label={`${attrSet.name}: ${itemOption.displayValue}${isSelected ? ' (selected)' : ''}`}
-                                ></span>
-                            );
-                            } else {
-                            return (
-                                <span
-                                key={itemOption.id}
-                                data-testid={`cart-item-attribute-${kebabAttributeName}-${itemValueKebab}${testIdSuffix}`}
-                                className={`px-1 py-1 border text-[14px] ${isSelected ? 'bg-[#1D1F22] text-white border-[#1D1F22] font-semibold' : 'bg-white text-[#1D1F22] border-[#1D1F22]'}`}
-                                >
-                                {itemOption.value}
-                                </span>
-                            );
-                            }
-                        })}
-                        </div>
-                    </div>
-                    );
+                  );
+                  return (
+                    <AttributeDisplay
+                      key={attrSet.id}
+                      attributeSet={attrSet}
+                      selectedItemId={selectedOptionForThisSet?.itemId}
+                      baseTestIdPrefix="cart-item"
+                      displayContext="cartItem"
+                    />
+                  );
                 })}
                 </div>
             )}

@@ -1,4 +1,4 @@
-{/* Products and Cart Interfaces*/}
+/* Products and Cart Interfaces*/
 export interface Currency {
   label: string;
   symbol: string;
@@ -67,7 +67,7 @@ export interface CartItem extends Product {
   quantity: number;
   selectedAttributes: SelectedAttribute[];
 }
-{/* Order Interfaces*/}
+/* Order Interfaces*/
 export interface OrderItemInput {
   product_id: string;
   product_name: string;
@@ -91,7 +91,7 @@ export interface PlaceOrderMutationData {
 export interface PlaceOrderMutationVars {
   orderInput: OrderInput;
 }
-{/* Components and Pages Interfaces*/}
+/* Components and Pages Interfaces*/
 export interface NavProps {
   cartItems: CartItem[];
   onUpdateQuantity: (productId: string, attributes: SelectedAttribute[], newQuantity: number) => void;

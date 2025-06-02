@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { GET_PRODUCT } from '../graphql/queries';
 import ProductGallery from '../components/ProductGallery';
+import AttributeDisplay from '../components/AttributeDisplay';
 import type {
   GetProductData,
   Attribute as AttributeSetType,
@@ -24,7 +25,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
   const [currentSelections, setCurrentSelections] = useState<Record<string, string | undefined>>({});
 
   useEffect(() => {
-    if (data?.product?.gallery?.length) {
+    if (data?.product?.id) {
        setCurrentSelections({});
     }
   }, [data?.product?.id]);
@@ -86,58 +87,16 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
 
         {product.attributes && product.attributes.length > 0 && (
           <div className="space-y-5">
-            {product.attributes.map((attrSet: AttributeSetType) => {
-              const kebabAttribute = attrSet.name.toLowerCase().replace(/\s+/g, '-');
-              
-              return (
-                <div key={attrSet.id} data-testid={`product-attribute-${kebabAttribute}`}>
-                  <h3 className="text-[18px] font-[700] text-[#1D1F22] uppercase tracking-wider mb-2">
-                    {attrSet.name}:
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {attrSet.items.map((item: AttributeItemType) => {
-                      const isSelected = currentSelections[attrSet.id] === item.id;
-                      const focusRingClasses = "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-500";
-                      
-                      if (attrSet.name.toLowerCase() === 'color') {
-                        return (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => handleAttributeSelect(attrSet.id, item.id)}
-                            className={`size-[32px]  ${focusRingClasses} transition-all
-                                        ${isSelected ? ' ring-1 ring-[green] ring-offset-1' : 'hover:border-gray-400'}`}
-                            title={item.displayValue}
-                            aria-label={`Select ${attrSet.name} ${item.displayValue}`}
-                            aria-pressed={isSelected}
-                            data-testid={`product-attribute-${kebabAttribute}-${item.value}`}
-                          >
-                            <span className="block w-full h-full" style={{ backgroundColor: item.value }}></span>
-                          </button>
-                        );
-                      } else {
-                        return (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => handleAttributeSelect(attrSet.id, item.id)}
-                            className={`min-w-[40px] h-10 px-3 py-1 border text-[16px] font-normal ${focusRingClasses} transition-colors
-                                        ${isSelected
-                                          ? 'bg-[#1D1F22] text-white border-[#1D1F22]'
-                                          : 'bg-white text-[#1D1F22] border-gray-400 hover:border-black'
-                                        }`}
-                            aria-pressed={isSelected}
-                            data-testid={`product-attribute-${kebabAttribute}-${item.value}`}
-                          >
-                            {item.value}
-                          </button>
-                        );
-                      }
-                    })}
-                  </div>
-                </div>
-              );
-            })}
+            {product.attributes.map((attrSet: AttributeSetType) => (
+              <AttributeDisplay
+                key={attrSet.id}
+                attributeSet={attrSet}
+                selectedItemId={currentSelections[attrSet.id]}
+                onAttributeSelect={handleAttributeSelect}
+                baseTestIdPrefix="product"
+                displayContext="productPage"
+              />
+            ))}
           </div>
         )}
 
