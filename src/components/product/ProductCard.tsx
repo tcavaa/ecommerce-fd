@@ -22,24 +22,24 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
     <div
       key={product.id}
       data-testid={`product-${kebabCaseName}`}
-      className="ProductsContainer group relative pt-4 flex flex-col overflow-hidden"
+      className="ProductsContainer group relative flex flex-col overflow-hidden"
     >
       <Link 
         to={`/product/${product.id}`} 
         className="block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg" 
         aria-label={`View details for ${product.name}`}
       >
-        <div className="aspect-w-1 aspect-h-1 overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-          <div className="relative ProductImage h-full">
+        <div className="overflow-hidden">
+          <div className="relative ProductImage">
             <img
               src={mainImage}
               alt={product.name}
-              className={`ProductImage h-full w-full object-cover object-center transition-opacity duration-300
+              className={`ProductImage object-cover object-center transition-opacity duration-300
                           ${!product.inStock ? 'filter grayscale' : ''}`}
               loading="lazy"
             />
             {!product.inStock && (
-              <div className="absolute OverlayProductOut inset-0 flex items-center justify-center bg-white bg-opacity-50">
+              <div className="absolute OverlayProductOut inset-0 flex items-center justify-center">
                 <span className="text-[#8D8F9A] text-[24px] font-normal uppercase tracking-wider px-2 py-1">
                   Out of Stock
                 </span>

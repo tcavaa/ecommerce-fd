@@ -95,11 +95,11 @@ const Navigation: FC<NavProps> = ({
           onClick={onClose}
           aria-label={`Open cart (${totalCartQuantity} items)`}
           data-testid={TEST_IDS.CART_BUTTON}
-          className='CartBtn relative p-2 rounded-md hover:bg-gray-100 transition-colors'>
+          className='CartBtn relative hover:bg-gray-100 transition-colors'>
           <img
             src={BlackCart}
             alt=''
-            className='h-6 w-6 text-gray-700'
+            className='text-gray-700'
             aria-hidden='true'
           />
           {totalCartQuantity > 0 && (
