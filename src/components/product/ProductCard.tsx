@@ -30,11 +30,11 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
         aria-label={`View details for ${product.name}`}
       >
         <div className="overflow-hidden">
-          <div className="relative h-[300px] m-auto">
+          <div className="relative h-[300px]">
             <img
               src={mainImage}
               alt={product.name}
-              className={`ProductImage object-cover object-center transition-opacity duration-300
+              className={`ProductImage transition-opacity duration-300
                           ${!product.inStock ? 'filter grayscale' : ''}`}
               loading="lazy"
             />
@@ -73,7 +73,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
           onClick={handleAddToCart}
           data-testid={TEST_IDS.ADD_TO_CART_BUTTON}
           aria-label={`Add ${product.name} to cart`}
-          className="absolute top-81 right-8 p-2 bg-[#5ECE7B] text-white rounded-full shadow-md 
+          className="absolute top-70 right-8 p-2 bg-[#5ECE7B] text-white rounded-full shadow-md 
                      opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all duration-300
                      transform translate-y-2 group-hover:translate-y-0 cursor-pointer
                      hover:bg-[#7be396] focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
