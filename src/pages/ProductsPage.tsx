@@ -23,7 +23,7 @@ const ProductsPage: FC<ProductsPageProps> = ({ onAddToCart }) => {
   
   if (loading) {
     return (
-      <div className="ProductsPageContainer mx-auto py-19 px-4 sm:px-6 lg:px-4">
+      <div className="max-w-[1280px] mx-auto py-19 px-4 sm:px-6 lg:px-4">
         <div className="h-12 w-64 bg-gray-200 rounded animate-pulse mb-10" />
         <div className="grid grid-cols-1 gap-y-25 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-8">
           {Array.from({ length: 6 }, (_, i) => (
@@ -40,7 +40,7 @@ const ProductsPage: FC<ProductsPageProps> = ({ onAddToCart }) => {
   
   if (error) {
     return (
-      <div className="ProductsPageContainer mx-auto py-19 px-4 sm:px-6 lg:px-4">
+      <div className="max-w-[1280px] mx-auto py-19 px-4 sm:px-6 lg:px-4">
         <div className="text-center py-20">
           <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
             <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@ const ProductsPage: FC<ProductsPageProps> = ({ onAddToCart }) => {
   }
   
   return (
-    <div className="ProductsPageContainer mx-auto py-19 px-4 sm:px-6 lg:px-4">
+    <div className="max-w-[1280px] mx-auto py-19 px-4 sm:px-6 lg:px-4">
       <h1 className="text-[42px] font-normal tracking-tight text-[#1D1F22] mb-10 capitalize">
         {categoryTitle}
       </h1>

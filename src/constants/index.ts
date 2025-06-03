@@ -35,4 +35,6 @@ export const TEST_IDS = {
   ADD_TO_CART_BUTTON: 'add-to-cart',
   PRODUCT_CARD: 'product-card',
   CART_ITEM: 'cart-item',
+  ATTRIBUTE_ITEM : 'attribute-item',
+  PRODUCT: 'product',
 } as const;

@@ -66,17 +66,17 @@ const Cart: FC<CartProps> = ({
 
   return (
     <div
-      className="CartModalOverlay"
+      className="CartModalOverlay fixed inset-0 z-50 flex justify-end top-[80px] overflow-hidden"
       data-testid="cart-overlay"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="cart-title"
     >
-      <div className="CartModalContainer" ref={modalRef} onClick={e => e.stopPropagation()}>
-        <div className="CartPanel">
-          <div className="CartContent">
-            <div className="flex forHeight flex-col overflow-y-scroll bg-white">
+      <div className="absolute right-1/15" ref={modalRef} onClick={e => e.stopPropagation()}>
+        <div className="flex flex-col height-full">
+          <div className="flex-[1] overflow-y-auto">
+            <div className="flex max-h-[628px] w-[325px] p-[10px] flex-col overflow-y-scroll bg-white">
               {/* Cart Header */}
               <div className="flex-1 overflow-y-auto py-2 sm:px-2">
                 <div className="flex items-start justify-between">

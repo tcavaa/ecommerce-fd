@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import type { CartItemProps, Attribute as AttributeSetType } from '../../types/interfaces';
 import AttributeDisplay from '../AttributeDisplay';
+import { TEST_IDS } from '../../constants';
 import { Link } from 'react-router-dom';
 
 const CartItem: FC<CartItemProps> = ({ product, onUpdateQuantity }) => {
@@ -47,7 +48,7 @@ const CartItem: FC<CartItemProps> = ({ product, onUpdateQuantity }) => {
                     key={attrSet.id}
                     attributeSet={attrSet}
                     selectedItemId={selectedOptionForThisSet?.itemId}
-                    baseTestIdPrefix="cart-item"
+                    baseTestIdPrefix={TEST_IDS.CART_ITEM}
                     displayContext="cartItem"
                   />
                 );

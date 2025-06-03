@@ -45,7 +45,7 @@ const ProductGallery = (data:GetProductData) => {
                 <button
                     key={index}
                     onClick={() => handleThumbnailClick(index)}
-                    className={`w-full galleryImg aspect-square overflow-hidden flex-shrink-0 transition-all duration-150
+                    className={`w-full h-[80px] aspect-square overflow-hidden flex-shrink-0 transition-all duration-150
                                 ${currentIndex === index ? 'border-gray-900 ring-1 ring-gray-900' : 'border-gray-300 hover:border-gray-500 opacity-70 hover:opacity-100'}`}
                     aria-label={`View image ${index + 1} of ${product.gallery.length}`}
                 >
@@ -59,11 +59,11 @@ const ProductGallery = (data:GetProductData) => {
             </div>
             )}
 
-            <div className="flex-grow relative  MainImageInner aspect-[0.8] sm:aspect-square lg:aspect-[0.8] bg-gray-100 rounded-sm overflow-hidden shadow-sm">
+            <div className="flex-grow relative h-[478px] w-[575px] aspect-[0.8] sm:aspect-square lg:aspect-[0.8] bg-gray-100 rounded-sm overflow-hidden shadow-sm">
             <img
                 src={mainImage}
                 alt={product.name}
-                className=" MainImageInnerImg object-cover"
+                className=" h-[478px] w-auto m-auto object-cover"
             />
             {product.gallery && product.gallery.length > 1 && (
                 <>

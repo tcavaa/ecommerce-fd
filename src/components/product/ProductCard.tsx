@@ -30,7 +30,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
         aria-label={`View details for ${product.name}`}
       >
         <div className="overflow-hidden">
-          <div className="relative ProductImage">
+          <div className="relative h-[300px] m-auto">
             <img
               src={mainImage}
               alt={product.name}

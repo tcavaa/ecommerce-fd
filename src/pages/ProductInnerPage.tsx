@@ -6,13 +6,13 @@ import { useParams } from 'react-router-dom';
 import { GET_PRODUCT } from '../graphql/queries';
 import ProductGallery from '../components/ProductGallery';
 import AttributeDisplay from '../components/AttributeDisplay';
+import { TEST_IDS } from '../constants';
 import type {
   GetProductData,
   Attribute as AttributeSetType,
   SelectedAttribute,
   ProductInnerPageProps,
 } from '../types/interfaces';
-import '../styles/ProductInnerPage.css';
 
 const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
   const { id } = useParams<{ id: string }>();
@@ -77,7 +77,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
   const currentPrice = product.prices && product.prices.length > 0 ? product.prices[0] : null;
 
   return (
-    <div className="ProductsInnerContainer container mx-auto mt-8 sm:mt-12 mb-20 px-4 sm:px-6">
+    <div className="max-w-[1280px] container mx-auto mt-8 sm:mt-12 mb-20 px-4 sm:px-6">
       <div className="lg:grid lg:grid-cols-2 lg:gap-x-10 xl:grid-cols-[auto_1fr] xl:gap-x-12 items-start">
         <ProductGallery product={data.product} />
 
@@ -96,7 +96,7 @@ const ProductInnerPage = ({ onAddToCart, onClose }: ProductInnerPageProps) => {
                   attributeSet={attrSet}
                   selectedItemId={currentSelections[attrSet.id]}
                   onAttributeSelect={handleAttributeSelect}
-                  baseTestIdPrefix="product"
+                  baseTestIdPrefix={TEST_IDS.PRODUCT}
                   displayContext="productPage"
                 />
               ))}

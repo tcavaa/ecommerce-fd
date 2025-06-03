@@ -6,7 +6,6 @@ import Cart from '../cart/Cart';
 import type { CategoryType, Category, NavProps } from '../../types/interfaces';
 import { TEST_IDS } from '../../constants';
 import { calculateTotalCartQuantity } from '../../utils/cart';
-import '../../styles/Nav.css';
 import logo from '../../assets/a-logo.png';
 import BlackCart from '../../assets/BlackCart.png';
 
@@ -37,7 +36,7 @@ const Navigation: FC<NavProps> = ({
 
   return (
     <nav
-      className='NavContainer flex justify-between items-center'
+      className='flex justify-between items-center max-w-[1440px] m-auto pt-[23px] pr-[100px] pb-[17px] pl-[100px]'
       role='navigation'
       aria-label='Main navigation'>
       {/* Category Links */}
@@ -66,7 +65,7 @@ const Navigation: FC<NavProps> = ({
                 <Link
                   to={linkTo}
                   className={`CategoryLink
-                    text-[16px] font-[400] flex items-center justify-center
+                    text-[16px] font-[400] h-[73px] flex items-center justify-center
                     transition uppercase
                     ${
                       isActive
@@ -86,7 +85,7 @@ const Navigation: FC<NavProps> = ({
 
       {/* Logo */}
       <Link to='/' aria-label='Go to homepage'>
-        <img src={logo} alt='Store Logo' className='Logo' />
+        <img src={logo} alt='Store Logo' className='size-[31px]' />
       </Link>
 
       {/* Cart Button */}
@@ -95,7 +94,7 @@ const Navigation: FC<NavProps> = ({
           onClick={onClose}
           aria-label={`Open cart (${totalCartQuantity} items)`}
           data-testid={TEST_IDS.CART_BUTTON}
-          className='CartBtn relative hover:bg-gray-100 transition-colors'>
+          className='CartBtn size-[20px] relative hover:bg-gray-100 transition-colors'>
           <img
             src={BlackCart}
             alt=''
